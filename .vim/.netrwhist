@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/net/home/carleton.atwater/Git/Support/IQD report'
+let g:netrw_dirhist_2='/net/home/carleton.atwater/Files/Vecna/Automating Surveys/surveyparser'
+let g:netrw_dirhist_3='/net/home/carleton.atwater/Git/Support/Adding_Surveys/logs/2014-03-10-231553'
+let g:netrw_dirhist_4='/net/home/carleton.atwater/Git/Support/Adding_Surveys/logs/2014-03-11-235951'
+let g:netrw_dirhist_5='/net/home/carleton.atwater/Git/Support/Sinatra'
+let g:netrw_dirhist_6='/net/home/carleton.atwater/Git/Support/Adding_Surveys/ebola_survey'
