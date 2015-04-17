@@ -1,5 +1,5 @@
 set nocompatible
-set wrap linebreak textwidth=0 
+set wrap linebreak textwidth=0
 map j gj
 map k gk
 map [Up] gk
@@ -21,7 +21,6 @@ set mouse=i
 syntax enable                     " Turn on syntax highlighting.
 filetype plugin indent on         " Turn on file type detection.
 
-set showmode
 set ruler                         " Show cursor position.
 set backspace=indent,eol,start    " Intuitive backspacing.
 
@@ -39,7 +38,7 @@ set visualbell                    " No beeping.
 set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location
 " set laststatus=2                  " Show the status line all the time
 " Useful status information at bottom of screen
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
+"set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 set tabstop=2 " size of hard tabstop
 set softtabstop=2
 set expandtab " tabs are spaces
@@ -65,3 +64,19 @@ map <F2> :NERDTreeToggle<CR>
 
 let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F5>"
+" airline statusbar and buffer manager
+" Enable the list of buffers
+ let g:airline#extensions#tabline#enabled = 1
+"
+" " Show just the filename
+" let g:airline#extensions#tabline#fnamemod = ':t'"
+" buffer list formatting
+ let g:airline#extensions#tabline#left_sep = '||'
+ let g:airline#extensions#tabline#left_alt_sep = ' ∥ '
+"disable whitespace detection
+ let g:airline#extensions#whitespace#enabled = 0
+" configure whether buffer numbers should be shown. >
+ let g:airline#extensions#tabline#buffer_nr_show = 1
+
+"airline will show mode
+set noshowmode
