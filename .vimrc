@@ -9,6 +9,7 @@ set incsearch
 set spelllang=en_us
 colorscheme monokai
 set background=dark
+highlight Search ctermfg=black ctermbg=yellow
 set number
 set mouse=i
 "Set cursor type based on mode
@@ -80,3 +81,15 @@ let g:NERDTreeMapPreview="<F5>"
 
 "airline will show mode
 set noshowmode
+
+
+"syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+silent! nmap <F6> :SyntasticToggleMode<CR>
