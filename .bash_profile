@@ -93,6 +93,7 @@ fi
 #alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias grep='grep --color=auto'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -127,37 +128,29 @@ alias remove="sudo apt-get remove"
 alias sources="sudo gedit /etc/apt/sources.list"
 alias addppa="sudo add-apt-repository"
 alias cleanremove="sudo apt-get autoremove && sudo apt-get autoclean && sudo apt-get clean"
-alias epistle="cd /media/MEDIA/Dropbox/epistle"
+alias epistle="cd ~/Dropbox/epistle"
 alias vlcl="vlc -I ncurses --browse-dir /media/MEDIA/Music"
 alias spi='ssh pi@192.168.1.12'
 alias pimc='ssh pi@192.168.1.2'
 alias dbox="cd /Users/carleton/Dropbox" 
-alias vecna="cd /media/MEDIA/Dropbox/Vecna" 
 alias pisynct="rsync -ruvhzn --size-only --progress --exclude-from '/media/MEDIA/Dropbox/Scripts/exclude.txt'  -e ssh pi@192.168.1.12:/media/Hub/videos/ /media/MEDIA/videos"
 alias pisync="rsync -ruvhz --size-only --progress --exclude-from '/media/MEDIA/Dropbox/Scripts/exclude.txt'  -e ssh pi@192.168.1.12:/media/Hub/videos/ /media/MEDIA/videos"
 alias pih="ssh -t pi@192.168.1.12 sudo halt"
-alias up="cd .."
-alias up2="cd ../.."
-alias up3="cd ../../.."
-alias up4="cd ../../../.."
 alias ll="ls -lhrt"
 alias rd="ruby ~/Git/ruby-todo/todo.rb"
 alias fcast="ruby ~/forecast.rb"
+alias batwing="ssh carleton@45.55.135.243 -p 6879"
 
-#todo.txt
-PATH=$PATH:"/home/carleton/todo.txt_cli-2.9/"
-export TODOTXT_DEFAULT_ACTION=ls
-alias crl='ssh -t carleton.atwater@pergolesi "source .bashrc; /bin/bash"'
 alias bc='bc -l'
 
 #Open new txt in epistle folder with given slug - "n newfile" opens newfile.txt
 n()  {
- vim -c 'startinsert' /media/MEDIA/Dropbox/epistle/${1}.txt
+ vim -c 'startinsert' ~/Dropbox/epistle/${1}.txt
 }
 
 #List files in epistle greping for the given slug
 nls() {
-	ls -rt /media/MEDIA/Dropbox/epistle/ | grep -i ${1}
+	ls -rt ~/Dropbox/epistle/ | grep -i ${1}
 }
 
 hgrep() {
@@ -167,10 +160,19 @@ hgrep() {
 alias pg_service='pg_ctl -D /usr/local/var/postgres'
 
 
+
 export EDITOR=vim
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-tmux attach -d
+#Make solarized vim play nice with tmux
+#alias tmux="TERM=screen-256color-bce tmux"
+alias tmux="tmux -2"
+copy(){
+  cat $1 | pbcopy
+}
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+#rbenv
+eval "$(rbenv init -)"
