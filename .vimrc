@@ -7,11 +7,12 @@ map [Down] gj
 set hlsearch
 set incsearch
 set spelllang=en_us
+let g:solarized_termcolors = 256  " New line!!"
 colorscheme monokai
 set background=dark
-highlight Search ctermfg=black ctermbg=yellow
 set number
 set mouse=i
+highlight Search ctermfg=black ctermbg=yellow
 "Set cursor type based on mode
 "if has("autocmd")
 "  au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
@@ -59,12 +60,16 @@ let g:neocomplcache_enable_at_startup = 1
 " ctr-r: Find and replace visually selected text in document with new phrase of your choosing
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left><left>
 "map F2 to Nerdtreetoggle
-silent! nmap <C-p> :NERDTreeToggle<CR>
+"silent! nmap <C-p> :NERDTreeToggle<CR>
 silent! map <F3> :NERDTreeFind<CR>
 map <F2> :NERDTreeToggle<CR>
 
 let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F5>"
+
+"ctrlp
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
 " airline statusbar and buffer manager
 " Enable the list of buffers
  let g:airline#extensions#tabline#enabled = 1
@@ -81,15 +86,17 @@ let g:NERDTreeMapPreview="<F5>"
 
 "airline will show mode
 set noshowmode
+"ctrl-s = and ctrl-s - will insert some erb tags
+let b:surround_{char2nr('=')} = "<%= \r %>"
+let b:surround_{char2nr('-')} = "<% \r %>"
 
+"buffer switching
+silent! map <F8> :bp<CR>
+silent! map <F9> :bn<CR>
+"search highlighted text
+vnoremap // y/<C-R>"<CR>
+let mapleader = "\<Space>"
 
-"syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-silent! nmap <F6> :SyntasticToggleMode<CR>
+"set ctrl-c and ctrl-v to clipboard copy/paste (mac)
+vnoremap <C-c> :w !pbcopy<CR><CR> 
+noremap <C-v> :r !pbpaste<CR><CR> 
