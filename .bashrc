@@ -73,9 +73,6 @@ alias autoclean="sudo apt-get autoclean"
 alias autoremove="sudo apt-get autoremove"
 alias clean="sudo apt-get clean"
 alias vim="vim -N"
-#most recent file in pwd
-#alias mrf= $(ls -t | head -n1)
-alias rd='ruby ~/ruby-todo/todo.rb'
 
 
 #grep that history!
@@ -95,9 +92,6 @@ alias untar='tar -zxvf'
 alias bc='bc -l'
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
-alias fcast='ruby ~/forecast.rb'
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-export LESS=' -R '
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
