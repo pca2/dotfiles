@@ -1,8 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/carleton/Git/luxdiagram'
-let g:netrw_dirhist_2='/Users/carleton/Git/kvideo'
-let g:netrw_dirhist_3='/Users/carleton/Git/poodr'
-let g:netrw_dirhist_4='/Users/carleton/Git/luxdiagram'
-let g:netrw_dirhist_5='/Users/carleton/.vim/autoload/autoload'
-let g:netrw_dirhist_6='/Users/carleton/.vim/taskpaper.vim'
+let g:netrw_dirhist_cnt =0
