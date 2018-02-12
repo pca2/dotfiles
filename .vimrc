@@ -102,3 +102,9 @@ let mapleader = "\<Space>"
 "set ctrl-c and ctrl-v to clipboard copy/paste (mac)
 vnoremap <C-c> :w !pbcopy<CR><CR> 
 noremap <C-v> :r !pbpaste<CR><CR> 
+set nofoldenable
+"non-regex search with :SS
+command! -nargs=1 SS let @/ = '\V'.escape(<q-args>, '/\')|normal! /<C-R>/<CR>
+
+"search open doc and return only matching lines in new window
+command! -nargs=1 Vgrep vimgrep <q-args> % | copen"')
