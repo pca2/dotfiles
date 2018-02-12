@@ -4,12 +4,13 @@ map j gj
 map k gk
 map [Up] gk
 map [Down] gj
+set background=dark
 set hlsearch
 set incsearch
 set spelllang=en_us
-let g:solarized_termcolors = 256  " New line!!"
-colorscheme monokai
-set background=dark
+"let g:solarized_termcolors = 256  " New line!!"
+"colorscheme monokai
+colorscheme Tomorrow-Night
 set number
 set mouse=i
 highlight Search ctermfg=black ctermbg=yellow
