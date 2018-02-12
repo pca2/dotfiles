@@ -87,6 +87,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 "airline will show mode
 set noshowmode
+set laststatus=2
 "ctrl-s = and ctrl-s - will insert some erb tags
 let b:surround_{char2nr('=')} = "<%= \r %>"
 let b:surround_{char2nr('-')} = "<% \r %>"
