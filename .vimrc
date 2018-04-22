@@ -106,3 +106,30 @@ command! -nargs=1 SS let @/ = '\V'.escape(<q-args>, '/\')|normal! /<C-R>/<CR>
 
 "search open doc and return only matching lines in new window
 command! -nargs=1 Vgrep vimgrep <q-args> % | copen"')
+
+"vim-plug
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
+
+" Declare the list of plugins.
+Plug 'maralla/completor.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'bling/vim-airline'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'elixir-lang/vim-elixir'
+Plug 'jiangmiao/auto-pairs'
+Plug 'kchmck/vim-coffee-script'
+Plug 'kien/ctrlp.vim'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'tomtom/tlib_vim'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-ruby/vim-ruby'
+
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
