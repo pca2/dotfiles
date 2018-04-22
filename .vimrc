@@ -8,8 +8,7 @@ set background=dark
 set hlsearch
 set incsearch
 set spelllang=en_us
-"let g:solarized_termcolors = 256  " New line!!"
-"colorscheme monokai
+let g:solarized_termcolors = 256  
 colorscheme Tomorrow-Night
 set number
 set mouse=i
