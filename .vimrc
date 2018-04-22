@@ -47,8 +47,6 @@ set softtabstop=2
 set expandtab " tabs are spaces
 set shiftwidth=2 "number of spaces for indentation
 set autoindent "maintain indention of previous line
-"pathogen!
-execute pathogen#infect()
 syntax on
 "set cursorline
 "map <leader>s 1z=
