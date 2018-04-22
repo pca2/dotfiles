@@ -39,18 +39,12 @@ set title                         " Set the terminal's title
 
 set visualbell                    " No beeping.
 set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location
-" set laststatus=2                  " Show the status line all the time
-" Useful status information at bottom of screen
-"set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 set tabstop=2 " size of hard tabstop
 set softtabstop=2
 set expandtab " tabs are spaces
 set shiftwidth=2 "number of spaces for indentation
 set autoindent "maintain indention of previous line
 syntax on
-"set cursorline
-"map <leader>s 1z=
-
 " :%s/foo/bar/gc
 " in insert mode ctrl-l will autocorrect the most recently misspelled word
 imap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
