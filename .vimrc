@@ -80,9 +80,8 @@ silent! map <F9> :bn<CR>
 vnoremap // y/<C-R>"<CR>
 let mapleader = "\<Space>"
 
-"set ctrl-c and ctrl-v to clipboard copy/paste (mac)
+"set ctrl-c to clipboard copy (mac)
 vnoremap <C-c> :w !pbcopy<CR><CR> 
-"noremap <C-v> :r !pbpaste<CR><CR> 
 set nofoldenable
 "non-regex search with :SS
 command! -nargs=1 SS let @/ = '\V'.escape(<q-args>, '/\')|normal! /<C-R>/<CR>
