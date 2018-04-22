@@ -37,11 +37,8 @@ set expandtab " tabs are spaces
 set shiftwidth=2 "number of spaces for indentation
 set autoindent "maintain indention of previous line
 syntax on
-" :%s/foo/bar/gc
 " in insert mode ctrl-l will autocorrect the most recently misspelled word
 imap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
-"neocomplete
-let g:neocomplcache_enable_at_startup = 1
 " ctr-r: Find and replace visually selected text in document with new phrase of your choosing
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left><left>
 "map F2 to Nerdtreetoggle
