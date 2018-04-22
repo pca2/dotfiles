@@ -60,9 +60,6 @@ map <F2> :NERDTreeToggle<CR>
 let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F5>"
 
-"ctrlp
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
 " airline statusbar and buffer manager
 " Enable the list of buffers
  let g:airline#extensions#tabline#enabled = 1
