@@ -14,13 +14,6 @@ colorscheme Tomorrow-Night
 set number
 set mouse=i
 highlight Search ctermfg=black ctermbg=yellow
-"Set cursor type based on mode
-"if has("autocmd")
-"  au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-"  au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-"  au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-"end
-
 syntax enable                     " Turn on syntax highlighting.
 filetype plugin indent on         " Turn on file type detection.
 
