@@ -77,8 +77,18 @@ silent! map <F9> :bn<CR>
 vnoremap // y/<C-R>"<CR>
 let mapleader = "\<Space>"
 
-"set ctrl-c to clipboard copy (mac)
-vnoremap <C-c> :w !pbcopy<CR><CR> 
+"different clipboard copying based on OS
+let uname = system("echo -n \"$(uname)\"")
+if uname == "Darwin"
+  vnoremap <C-c> :w !pbcopy<CR><CR> 
+endif
+if uname == "Linux"
+  vnoremap <C-c> "+y<CR>
+endif
+if uname =~ "CYGWIN"
+  vnoremap <C-c> "*y<CR>
+endif
+
 set nofoldenable
 "non-regex search with :SS
 command! -nargs=1 SS let @/ = '\V'.escape(<q-args>, '/\')|normal! /<C-R>/<CR>
