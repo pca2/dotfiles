@@ -76,6 +76,7 @@ silent! map <F9> :bn<CR>
 "search highlighted text
 vnoremap // y/<C-R>"<CR>
 let mapleader = "\<Space>"
+let maplocalleader = "\<Space>"
 
 "different clipboard copying based on OS
 let uname = system("echo -n \"$(uname)\"")
