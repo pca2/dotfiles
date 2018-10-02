@@ -106,11 +106,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'maralla/completor.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kchmck/vim-coffee-script'
-Plug 'kien/ctrlp.vim'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'
@@ -123,6 +121,9 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'plasticboy/vim-markdown'
 "Plug 'irrationalistic/vim-tasks'
 Plug 'davidoc/taskpaper.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -131,4 +132,11 @@ let g:vim_markdown_folding_disabled = 1
 "vim-tasks
 "let g:TasksMarkerBase = '-'
 "let g:TasksArchiveSeparator = '-------------------------------------' 
+
+
+"Search files in pwd using fzf and ripgrep https://bit.ly/2qeNqPc
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+
+"search just my notes folder
+command! -bang -nargs=* Ff call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, {'dir': '~/Dropbox/epistle'},  <bang>0)
 
