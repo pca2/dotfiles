@@ -121,9 +121,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-ruby/vim-ruby'
 Plug 'plasticboy/vim-markdown'
+"Plug 'irrationalistic/vim-tasks'
+Plug 'davidoc/taskpaper.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
 let g:vim_markdown_folding_disabled = 1
+"vim-tasks
+"let g:TasksMarkerBase = '-'
+"let g:TasksArchiveSeparator = '-------------------------------------' 
 
