@@ -13,6 +13,7 @@ colorscheme Tomorrow-Night
 set number
 set mouse=i
 highlight Search ctermfg=black ctermbg=yellow
+hi SpellBad cterm=underline ctermfg=white ctermbg=darkred
 syntax enable                     " Turn on syntax highlighting.
 filetype plugin indent on         " Turn on file type detection.
 
