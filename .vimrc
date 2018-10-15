@@ -119,7 +119,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-ruby/vim-ruby'
 Plug 'plasticboy/vim-markdown'
-"Plug 'irrationalistic/vim-tasks'
 Plug 'davidoc/taskpaper.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -129,10 +128,6 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 let g:vim_markdown_folding_disabled = 1
-"vim-tasks
-"let g:TasksMarkerBase = '-'
-"let g:TasksArchiveSeparator = '-------------------------------------' 
-
 
 "Search files in pwd using fzf and ripgrep https://bit.ly/2qeNqPc
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
