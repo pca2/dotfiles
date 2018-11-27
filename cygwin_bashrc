@@ -1,0 +1,170 @@
+# If not running interactively, don't do anything
+[[ "$-" != *i* ]] && return
+
+source ~/git-prompt.sh
+#export PS1="\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\W\[\e[33m\][\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)]\\$\[\e[m\] "
+#export PS1="\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\W\[\e[33m\]\\$\[\e[m\] "
+export PS1="\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\W\$(declare -F __git_ps1 &>/dev/null && __git_ps1 ' (%s)')\[\e[33m\]\\$\[\e[m\] "
+export EDITOR='vim'
+#export SHELL='bash'
+export win_home="$HOME/whome"
+alias whome="cd $win_home"
+alias ls="ls --color=auto"
+alias ll="ls -lhrt"
+alias mv="mv -i" #prompt before overwriting existing
+alias grep="grep --color=auto"
+alias tmux="tmux -2" #force 256 color support
+#source ~/.bin/tmuxinator.bash
+alias dev="cd $win_home/Dev/Code/scripts"
+
+hgrep() {
+  history | grep ${1}
+}
+
+# return line number $1 from file $2
+get_line () { sed -n "$1,0p" $2 ;  }
+
+
+#homespun jrnl
+source ~/whome/Dev/Code/scripts/jrnl.sh
+
+
+#I had trouble getting pry to launch from prompt, so here's a workaround
+#UPDATE- they're in ~/bin
+#alias pry="ruby -r pry -e 'binding.pry'"
+#other aliases
+alias open="cygstart"
+#pbcopy
+if [ -e /dev/clipboard ]; then
+  alias pbcopy="cat > /dev/clipboard"
+  alias pbpaste="cat /dev/clipboard"
+  copy(){
+    cat "$1" > /dev/clipboard
+  }
+fi
+
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+# keep .bash_history updated after every command
+PROMPT_COMMAND='history -a; history -n'
+# append to the history file, don't overwrite it
+shopt -s histappend
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+# put timestamps in the history
+HISTTIMEFORMAT='%F %T '
+alias batwing="ssh -p 6879 carleton@45.55.135.243"
+alias j=jrnl
+alias js="jrnl --short"
+
+jl(){
+  jrnl $1 | tr -d "|" | less
+}
+
+je(){
+  jrnl $1 --edit
+}
+
+#using text expander instead
+#alias psgrep="ps -ef | grep"
+
+#homespun watch command first param is command and second is how long to sleep. Default is 2
+watch(){
+  if [ -z "$2"  ]; then 
+    len=2
+  else
+    len=$2
+  fi
+  while true; do clear
+    "$1"
+    sleep $len
+  done
+}
+
+alias cdgit="cd /home/atwapa01/whome/Dev/Code/Pentaho/git_version/production_repository/public"
+alias doc="cd /home/atwapa01/whome/Documents/"
+
+#rsync
+#alias syncup="rsync -avzh --delete --progress /home/AtwaPa01/whome/Dev/Code/Pentaho/git_version/production_repository -e 'ssh -p 6879' patwater@127.0.0.1:~/"
+#alias syncdown="rsync -avzh --delete --progress -e 'ssh -p 6879' patwater@127.0.0.1:~/production_repository /home/AtwaPa01/whome/Dev/Code/Pentaho/git_version/"
+#alias script_sync_up="rsync --delete -avzh --progress /home/AtwaPa01/whome/Dev/Code/scripts -e 'ssh -p 6878' patwater@127.0.0.1:~/"
+#alias script_sync_down="rsync --delete  -avzh --progress  -e 'ssh -p 6878' patwater@127.0.0.1:~/scripts /home/AtwaPa01/whome/Dev/Code/"
+
+
+#older methods with agent forwarding
+alias syncup="rsync -avzh --delete --progress /home/AtwaPa01/whome/Dev/Code/Pentaho/git_version/production_repository -e ssh patwater@blade75:~/"
+alias syncdown="rsync -avzh --delete  --progress  -e ssh patwater@blade75:~/production_repository /home/AtwaPa01/whome/Dev/Code/Pentaho/git_version/"
+alias script_sync_up="rsync -avzh --delete  --progress /home/AtwaPa01/whome/Dev/Code/scripts -e ssh patwater@db01:~/"
+alias script_sync_down="rsync -avzh --delete  --progress  -e ssh patwater@db01:~/scripts /home/AtwaPa01/whome/Dev/Code/"
+
+alias subl=" nohup ~/whome/SublimeText/sublime_text.exe . > /dev/null &"
+alias tv=terminal_velocity
+
+
+#counts_formatter
+alias cformat="bash ~/whome/Dev/Code/scripts/counts_formatter.sh"
+
+#gitls pretty
+alias gitls="bash ~/whome/Dev/Code/scripts/gitls.sh"
+
+
+
+#connections. Now over tunnel instead of agent forwarding
+#alias enc="autossh -M 0 -L 3306:192.168.0.200:3306 -L 9080:192.168.0.175:9080 -L 25:localhost:25 -L 6879:blade-75.enclarity.com:22 -L 6878:db01.enclarity.com:22 patwater@172.23.247.40"
+#alias sdb="ssh patwater@127.0.0.1 -p 6878"
+alias sdb="ssh -t -A -R 6881:gitlab.ins.risk.regn.net:22 enclarity ssh -t -A -R 6881:localhost:6881 db01.enclarity.com"
+# Older sblade using tunnels, but no gitlab access
+#alias sblade="ssh -A -R 6880:localhost:6800 patwater@127.0.0.1 -p 6879"
+alias sblade="ssh -t -A -R 6880:gitlab.ins.risk.regn.net:22 enclarity ssh -t -A -R 6880:localhost:6880 blade-75"
+
+
+# 
+#ssh into enclarity4 interim server, with ports forwarded for DB and Kettle watch access
+alias enc="autossh -M 0 -L 3307:192.168.0.172:3306 -L 3306:192.168.0.200:3306 -L 9080:192.168.0.175:9080 -L 25:localhost:25 patwater@172.23.247.40"
+#alias sdb="ssh patwater@db01.enclarity.com"
+#alias sblade="ssh patwater@blade-75.enclarity.com"
+#There's  a proxy setup, so you can just ssh directly into db01 and blade
+
+#ssh into db01 through interim server, forwarding same ports
+#alias db01p="ssh -t patwater@172.23.247.40 -L 3306:192.168.0.200:3306 -L 9080:192.168.0.175:9080 ssh patwater@db01.enclarity.com"
+#alias blade-75="ssh -t db01.enclarity.com 'ssh -t blade-75'"
+
+alias s06="ssh patwater@shell06.dpcdprod.hmsonline.com"
+alias pls="ssh patwater@plsfssh01.hmsonline.com"
+###
+
+alias penta_strip='sed -e "s/&#xd;&#xa;&#xd;&#xa;/<p><\/p>/g" -e "s/&#xd;&#xa;/<br>/g" | lynx -stdin -dump -force_html -nolist -width=1024 | sed "s/^\s\s\s//g"'
+alias t_journ="t list timeline -l -d  pca2/journo | less"
+
+argus_log(){
+  timestamp=`date +%F_%H%M%S`
+  cp ~/whome/Documents/Notes/argus_run_log_template.txt ~/whome/Documents/Notes/argus_run_log_$timestamp.txt
+  vim ~/whome/Documents/Notes/argus_run_log_$timestamp.txt
+}
+
+alias sc="open /home/AtwaPa01/whome/my_apps/SoundCloud/SoundCloud.lnk"
+alias  mmysql="mysql -uautobot -p -P 3306 -h 127.0.0.1 -A"
+alias filecounts="open ~/home/Dev/Code/scripts/filecounts_template.xlsx"
+alias startmux="tmuxinator s enc && tmuxinator s 1"
+alias smerge="/cygdrive/c/Users/atwapa01/portable_apps/sublime_merge_build_1084_x64/smerge.exe"
+
+scp_ca(){
+  scp patwater@blade-75.enclarity.com:/home/clients/covered_ca/tier_2_and_3/pentaho_runs/"$1"/"$2" /tmp/
+}
+
+#git stuff
+SSHAGENT=/usr/bin/ssh-agent
+SSHAGENTARGS="-s"
+if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
+	eval `$SSHAGENT $SSHAGENTARGS`
+	trap "kill $SSH_AGENT_PID" 0
+fi
+ssh-add ~/.ssh/id_rsa
+
+
+#cd ~/whome
+#echo "READY."
+shuf -n 1 ~/Bash_Strategies/oblique_strategies.txt
