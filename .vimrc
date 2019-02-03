@@ -46,9 +46,11 @@ vnoremap <C-r> "hy:%s/<C-r>h//g<left><left><left>
 "silent! nmap <C-p> :NERDTreeToggle<CR>
 silent! map <F3> :NERDTreeFind<CR>
 map <F2> :NERDTreeToggle<CR>
+map <F6> :SyntasticToggleMode <CR>
 
 let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F5>"
+let g:NERDTreeNodeDelimiter = "\u00a0"
 
 " airline statusbar and buffer manager
 " Enable the list of buffers
