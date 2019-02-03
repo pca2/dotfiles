@@ -9,7 +9,7 @@ set hlsearch
 set incsearch
 set spelllang=en_us
 let g:solarized_termcolors = 256  
-colorscheme Tomorrow-Night
+colorscheme Monokai
 set number
 set mouse=i
 highlight Search ctermfg=black ctermbg=yellow
