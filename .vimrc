@@ -120,7 +120,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-ruby/vim-ruby'
 Plug 'plasticboy/vim-markdown'
 Plug 'davidoc/taskpaper.vim'
-Plug '/usr/local/opt/fzf'
+Plug '/usr/local/opt/fzf' 
+"If installed via git, you will need to create symlink from here to ~/.fzf/
 Plug 'junegunn/fzf.vim'
 
 
