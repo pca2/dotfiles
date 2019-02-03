@@ -84,7 +84,7 @@ let maplocalleader = "\<Space>"
 "different clipboard copying based on OS
 let uname = system("echo -n \"$(uname)\"")
 if uname == "Darwin"
-  vnoremap <C-c> :w !pbcopy<CR><CR> 
+  vnoremap <C-c> "+y<CR>
 endif
 if uname == "Linux"
   vnoremap <C-c> "+y<CR>
