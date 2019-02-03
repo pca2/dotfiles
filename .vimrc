@@ -9,7 +9,7 @@ set hlsearch
 set incsearch
 set spelllang=en_us
 let g:solarized_termcolors = 256  
-colorscheme Tomorrow-Night
+colorscheme Monokai
 set number
 set mouse=i
 highlight Search ctermfg=black ctermbg=yellow
@@ -46,9 +46,11 @@ vnoremap <C-r> "hy:%s/<C-r>h//g<left><left><left>
 "silent! nmap <C-p> :NERDTreeToggle<CR>
 silent! map <F3> :NERDTreeFind<CR>
 map <F2> :NERDTreeToggle<CR>
+map <F6> :SyntasticToggleMode <CR>
 
 let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F5>"
+let g:NERDTreeNodeDelimiter = "\u00a0"
 
 " airline statusbar and buffer manager
 " Enable the list of buffers
@@ -82,7 +84,7 @@ let maplocalleader = "\<Space>"
 "different clipboard copying based on OS
 let uname = system("echo -n \"$(uname)\"")
 if uname == "Darwin"
-  vnoremap <C-c> :w !pbcopy<CR><CR> 
+  vnoremap <C-c> "+y<CR>
 endif
 if uname == "Linux"
   vnoremap <C-c> "+y<CR>
@@ -112,7 +114,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
+Plug 'vim-syntastic/syntastic'
 Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -128,11 +130,19 @@ Plug 'junegunn/fzf.vim'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
+"highlighting seems to get overwritten
+highlight Search ctermfg=black ctermbg=yellow
+
 let g:vim_markdown_folding_disabled = 1
 
 "Search files in pwd using fzf and ripgrep https://bit.ly/2qeNqPc
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-
 "search just my notes folder
 command! -bang -nargs=* Ff call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, {'dir': '~/Dropbox/epistle'},  <bang>0)
 
+"ctrlp replacement
+map <C-p> :Files<CR>
+
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'

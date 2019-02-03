@@ -55,7 +55,8 @@ imap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 let g:neocomplcache_enable_at_startup = 1
 " ctr-r: Find and replace visually selected text in document with new phrase of your choosing
 vnoremap <C-r> "hy:%s/<C-r>h//g<left><left><left>
-vnoremap <C-t> "hy:s/<C-r>h/If(<C-r>h is null,'',<C-r>h) as <C-r>h/g<left><left><left>
+vnoremap <C-t> "hy:s/<C-r>h/IF(<C-r>h = "0000-00-00" or <C-r>h is null,'', date_format(<C-r>h, '%Y-%m-%d')) as <C-r>h/g<CR>
+vnoremap <C-t> "hy:s/<C-r>h/date_format(<C-r>h, '%Y-%m-%d')/g<CR>
 "map F2 to Nerdtreetoggle
 silent! nmap <C-p> :NERDTreeToggle<CR>
 silent! map <F3> :NERDTreeFind<CR>
@@ -105,14 +106,28 @@ augroup END
 
 set background=dark
 colorscheme monokai
-"ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_working_path_mode = ''
+"ctrlp
+map <C-p> :CtrlPCurWD<CR>
+command! Notes  CtrlP ~/whome/Documents/Notes
 "search for selected text with //
 vnoremap // y/<C-R>"<CR>
 
 "save highlight to clipboard
-vnoremap <C-c> "*y<CR>
+"vnoremap <C-c> "*y<CR>
 
+"different clipboard copying based on OS
+let uname = system("echo -n \"$(uname)\"")
+if uname == "Darwin"
+  vnoremap <C-c> :w !pbcopy<CR><CR> 
+endif
+if uname == "Linux"
+  vnoremap <C-c> "+y<CR>
+endif
+if uname =~ "CYGWIN"
+  vnoremap <C-c> "*y<CR>
+endif
 "non-regex search with :ss <string>
 command! -nargs=1 SS let @/ = '\V'.escape(<q-args>, '/\')|normal! /<C-R>/<CR>
 
@@ -121,5 +136,12 @@ command! -nargs=1 Vgrep vimgrep <q-args> % | copen
 
 
 "set foldmethod=marker
+let g:vim_markdown_folding_disabled = 1
 
 highlight Search ctermfg=black ctermbg=yellow
+let mapleader = "\<Space>"
+let g:TasksMarkerBase = '-'
+
+let g:buffergator_viewport_split_policy="B"
+let g:buffergator_hsplit_size=5
+command! Buffers  BuffergatorOpen 
