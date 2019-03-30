@@ -105,14 +105,16 @@ command! -nargs=1 Vgrep vimgrep <q-args> % | copen"')
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
-Plug 'maralla/completor.vim'
+"Plug 'maralla/completor.vim'
+Plug 'ajh17/VimCompletesMe'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
-Plug 'elixir-lang/vim-elixir'
+"Plug 'elixir-lang/vim-elixir'
 Plug 'jiangmiao/auto-pairs'
-Plug 'kchmck/vim-coffee-script'
-Plug 'mxw/vim-jsx'
+"Plug 'kchmck/vim-coffee-script'
+Plug 'mxw/vim-jsx' " I turned off indentation https://bit.ly/2HKzKIc
 Plug 'pangloss/vim-javascript'
+Plug 'alvan/vim-closetag'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-syntastic/syntastic'
 Plug 'tomtom/tlib_vim'
@@ -142,6 +144,14 @@ command! -bang -nargs=* Notes call fzf#vim#grep('rg --column --line-number --no-
 
 "ctrlp replacement
 map <C-p> :Files<CR>
+
+"vim-closetag settings
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx, *.js'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.js'
+let g:closetag_shortcut = '>'
+let g:closetag_close_shortcut = '<leader>>'
+
+
 
 
 let g:syntastic_javascript_checkers = ['eslint']
