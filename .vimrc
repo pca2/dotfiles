@@ -127,7 +127,7 @@ Plug 'davidoc/taskpaper.vim'
 Plug '/usr/local/opt/fzf' 
 "If installed via git, you will need to create symlink from here to ~/.fzf/
 Plug 'junegunn/fzf.vim'
-
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install()  }  }
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
