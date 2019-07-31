@@ -51,6 +51,7 @@ map <F6> :SyntasticToggleMode <CR>
 let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F5>"
 let g:NERDTreeNodeDelimiter = "\u00a0"
+let g:NERDTreeWinSize=25
 
 " airline statusbar and buffer manager
 " Enable the list of buffers
@@ -112,8 +113,9 @@ Plug 'bling/vim-airline'
 "Plug 'elixir-lang/vim-elixir'
 Plug 'jiangmiao/auto-pairs'
 "Plug 'kchmck/vim-coffee-script'
-Plug 'mxw/vim-jsx' " I turned off indentation https://bit.ly/2HKzKIc
-Plug 'pangloss/vim-javascript'
+"Plug 'mxw/vim-jsx' " I turned off indentation https://bit.ly/2HKzKIc
+"Plug 'pangloss/vim-javascript' "vim-jsx-improve takes care of this one
+Plug 'chemzqm/vim-jsx-improve'
 Plug 'alvan/vim-closetag'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-syntastic/syntastic'
@@ -128,6 +130,7 @@ Plug '/usr/local/opt/fzf'
 "If installed via git, you will need to create symlink from here to ~/.fzf/
 Plug 'junegunn/fzf.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install()  }  }
+Plug 'tpope/vim-surround'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -140,8 +143,11 @@ let g:vim_markdown_folding_disabled = 1
 "Search files in pwd using fzf and ripgrep https://bit.ly/2qeNqPc
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 "search just my notes folder
-command! -bang -nargs=* Notes call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, {'dir': '~/Dropbox/epistle'},  <bang>0)
+command! -bang -nargs=* Notes call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, {'dir': '~/Documents/Notes'},  <bang>0)
 command! -bang -nargs=1 NewNote execute 'e ~/Documents/Notes/' . <q-args> . '.md'
+
+"Close all open buffers but the current one (Saves the current one first)
+command! BufOnly silent! execute "w|%bd|e#|bd#"
 
 "ctrlp replacement
 map <C-p> :Files<CR>
