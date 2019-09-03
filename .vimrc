@@ -131,6 +131,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install()  }  }
 Plug 'tpope/vim-surround'
+Plug 'christoomey/vim-tmux-navigator'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -141,7 +142,7 @@ highlight Search ctermfg=black ctermbg=yellow
 let g:vim_markdown_folding_disabled = 1
 
 "Search files in pwd using fzf and ripgrep https://bit.ly/2qeNqPc
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 "search just my notes folder
 command! -bang -nargs=* Notes call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, {'dir': '~/Documents/Notes'},  <bang>0)
 command! -bang -nargs=1 NewNote execute 'e ~/Documents/Notes/' . <q-args> . '.md'
@@ -157,7 +158,10 @@ let g:closetag_xhtml_filenames = '*.xhtml,*.jsx, *.js'
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx,*.js'
 let g:closetag_shortcut = '>'
 let g:closetag_close_shortcut = '<leader>>'
-
+"toggele paste in all modes
+set pastetoggle=<F10>
+"use gf to open filepath under cursor
+map gf :e <cfile><CR>
 
 
 
