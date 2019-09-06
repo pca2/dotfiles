@@ -31,7 +31,9 @@ set ruler
 set title                         " Set the terminal's title
 
 set visualbell                    " No beeping.
-set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location
+set directory=$HOME/.vim/swap//,/tmp//,.  " Keep swap files in one location
+set backupdir=$HOME/.vim/backup//,/tmp//,.
+set undodir=/tmp,.
 set tabstop=2 " size of hard tabstop
 set softtabstop=2
 set expandtab " tabs are spaces
@@ -143,6 +145,7 @@ let g:vim_markdown_folding_disabled = 1
 
 "Search files in pwd using fzf and ripgrep https://bit.ly/2qeNqPc
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+command! -bang -nargs=* F call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 "search just my notes folder
 command! -bang -nargs=* Notes call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, {'dir': '~/Documents/Notes'},  <bang>0)
 command! -bang -nargs=1 NewNote execute 'e ~/Documents/Notes/' . <q-args> . '.md'
@@ -162,6 +165,7 @@ let g:closetag_close_shortcut = '<leader>>'
 set pastetoggle=<F10>
 "use gf to open filepath under cursor
 map gf :e <cfile><CR>
+command! Tasks execute 'e ~/Documents/Notes/Tasks.taskpaper'
 
 
 
