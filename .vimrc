@@ -166,3 +166,10 @@ command! Tasks execute 'e ~/Documents/Notes/Tasks.taskpaper'
 
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
+
+"Persistent folds in files
+augroup AutoSaveFolds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent loadview
+augroup END
