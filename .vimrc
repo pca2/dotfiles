@@ -48,7 +48,7 @@ vnoremap <C-r> "hy:%s/<C-r>h//g<left><left><left>
 "silent! nmap <C-p> :NERDTreeToggle<CR>
 silent! map <F3> :NERDTreeFind<CR>
 map <F2> :NERDTreeToggle<CR>
-map <F6> :SyntasticToggleMode <CR>
+map <F6> :ALEToggle <CR>
 
 let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeMapPreview="<F5>"
@@ -108,19 +108,14 @@ command! -nargs=1 Vgrep vimgrep <q-args> % | copen"')
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
-"Plug 'maralla/completor.vim'
 Plug 'ajh17/VimCompletesMe'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
-"Plug 'elixir-lang/vim-elixir'
 Plug 'jiangmiao/auto-pairs'
-"Plug 'kchmck/vim-coffee-script'
-"Plug 'mxw/vim-jsx' " I turned off indentation https://bit.ly/2HKzKIc
-"Plug 'pangloss/vim-javascript' "vim-jsx-improve takes care of this one
 Plug 'chemzqm/vim-jsx-improve'
 Plug 'alvan/vim-closetag'
 Plug 'scrooloose/nerdtree'
-Plug 'vim-syntastic/syntastic'
+Plug 'dense-analysis/ale'
 Plug 'tomtom/tlib_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
