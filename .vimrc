@@ -166,6 +166,8 @@ map gf :e <cfile><CR>
 command! Tasks execute 'e ~/Documents/Notes/Tasks.taskpaper'
 
 
+"map leader (space) to switch to last buffer
+noremap <Leader>l :b#<CR>
 
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
