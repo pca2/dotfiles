@@ -147,6 +147,9 @@ command! -bang -nargs=1 NewNote execute 'e ~/Documents/Notes/' . <q-args> . '.md
 
 "Close all open buffers but the current one (Saves the current one first)
 command! BufOnly silent! execute "w|%bd|e#|bd#"
+command! Bon silent! execute "w|%bd|e#|bd#"
+"close current buffer without closing current window
+command! Bd silent! execute "bp|sp|bn|bd"
 
 "ctrlp replacement
 map <C-p> :Files<CR>
