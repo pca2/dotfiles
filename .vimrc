@@ -178,3 +178,6 @@ augroup AutoSaveFolds
   autocmd BufWinLeave * mkview
   autocmd BufWinEnter * silent loadview
 augroup END
+
+" ensure hard tabs in taskpaper files
+autocmd Filetype taskpaper       set noexpandtab
