@@ -144,13 +144,11 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 command! -bang -nargs=* F call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 "search just my notes folder
 
-if $HOSTNAME == 'carlbook.local'
+if hostname() == "carlbook.local"
   command! -bang -nargs=* Notes call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, {'dir': '~/Dropbox/epistle/PromptWorks'},  <bang>0)
   command! -bang -nargs=1 NewNote execute 'e ~/Dropbox/epistle/PromptWorks/' . <q-args> . '.md'
   command! Tasks execute 'e ~/Dropbox/epistle/PromptWorks/PW.taskpaper'
-endif
-
-if $HOSTNAME != 'carlbook.local'
+else
   command! -bang -nargs=* Notes call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, {'dir': '~/Dropbox/epistle'},  <bang>0)
   command! -bang -nargs=1 NewNote execute 'e ~/Dropbox/epistle/' . <q-args> . '.md'
   command! Tasks execute 'e ~/Dropbox/epistle/Tasks.taskpaper'
