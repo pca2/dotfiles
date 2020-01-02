@@ -129,6 +129,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install()  }  }
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'lifepillar/vim-solarized8'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
