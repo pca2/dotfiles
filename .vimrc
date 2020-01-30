@@ -130,6 +130,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install()  }  }
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'lifepillar/vim-solarized8'
+Plug 'RRethy/vim-illuminate'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -188,3 +189,5 @@ augroup END
 
 " ensure hard tabs in taskpaper files
 autocmd Filetype taskpaper       set noexpandtab
+
+hi link illuminatedWord Visual
