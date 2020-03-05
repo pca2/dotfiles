@@ -192,3 +192,10 @@ augroup END
 autocmd Filetype taskpaper       set noexpandtab
 
 hi link illuminatedWord Visual
+
+" Disable tmux navigator when zooming the Vim pane
+let g:tmux_navigator_disable_when_zoomed = 1
+
+"use find and replace to wrap text correctly
+vnoremap <C-t> "hy:s/<C-r>h/[_(<C-r>h)]/g<CR>"
+vnoremap <C-t> "hy:s/<C-r>h/_(<C-r>h, request)/g<CR>"
