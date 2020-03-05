@@ -184,8 +184,8 @@ let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
 "Persistent folds in files
 augroup AutoSaveFolds
   autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent loadview
+  autocmd Filetype taskpaper BufWinLeave * mkview
+  autocmd Filetype taskpaper BufWinEnter * silent loadview
 augroup END
 
 " ensure hard tabs in taskpaper files
