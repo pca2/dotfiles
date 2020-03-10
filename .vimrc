@@ -182,16 +182,18 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
 
 "Persistent folds in files
-augroup AutoSaveFolds
-  autocmd!
-  autocmd Filetype taskpaper BufWinLeave * mkview
-  autocmd Filetype taskpaper BufWinEnter * silent loadview
-augroup END
+"augroup AutoSaveFolds
+"  autocmd!
+"  autocmd Filetype taskpaper BufWinLeave * mkview
+"  autocmd Filetype taskpaper BufWinEnter * silent loadview
+"augroup END
 
 " ensure hard tabs in taskpaper files
 autocmd Filetype taskpaper       set noexpandtab
 
 hi link illuminatedWord Visual
+"disable
+let g:Illuminate_highlightUnderCursor = 0
 
 " Disable tmux navigator when zooming the Vim pane
 let g:tmux_navigator_disable_when_zoomed = 1
