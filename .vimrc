@@ -144,8 +144,10 @@ let g:vim_markdown_folding_disabled = 1
 "Search files in pwd using fzf and ripgrep https://bit.ly/2qeNqPc
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 command! -bang -nargs=* F call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-"search just my notes folder
+"search highlighted phrase 
+vnoremap <C-f> "hy:F <C-r>h<CR>"
 
+"search just my notes folder
 if hostname() == "carlbook.local"
   command! -bang -nargs=* Notes call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, {'dir': '~/Dropbox/epistle/PromptWorks'},  <bang>0)
   command! -bang -nargs=1 NewNote execute 'e ~/Dropbox/epistle/PromptWorks/' . <q-args> . '.md'
