@@ -132,6 +132,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'lifepillar/vim-solarized8'
 Plug 'RRethy/vim-illuminate'
 Plug 'Chiel92/vim-autoformat'
+Plug 'elixir-editors/vim-elixir'
+Plug 'hashivim/vim-terraform'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
