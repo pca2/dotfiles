@@ -132,6 +132,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'lifepillar/vim-solarized8'
 Plug 'RRethy/vim-illuminate'
 Plug 'Chiel92/vim-autoformat'
+Plug 'hashivim/vim-terraform'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -146,9 +147,10 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 command! -bang -nargs=* F call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case  --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 "search highlighted phrase 
 vnoremap <C-f> "hy:F <C-r>h<CR>"
+vnoremap <C-x> "hy:!open <C-r>h<CR>"
 
 "search just my notes folder
-if hostname() == "carlbook.local"
+if hostname() == "Carleton-Atwater.local"
   command! -bang -nargs=* Notes call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, {'dir': '~/Dropbox/epistle/PromptWorks'},  <bang>0)
   command! -bang -nargs=1 NewNote execute 'e ~/Dropbox/epistle/PromptWorks/' . <q-args> . '.md'
   command! Tasks execute 'e ~/Dropbox/epistle/PromptWorks/PW.taskpaper'
@@ -191,7 +193,7 @@ let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
 "augroup END
 
 " ensure hard tabs in taskpaper files
-autocmd Filetype taskpaper       set noexpandtab
+autocmd Filetype taskpaper  set noexpandtab
 
 hi link illuminatedWord Visual
 "disable
@@ -203,3 +205,4 @@ let g:tmux_navigator_disable_when_zoomed = 1
 "use find and replace to wrap text correctly
 vnoremap <C-t> "hy:s/<C-r>h/[_(<C-r>h)]/g<CR>"
 vnoremap <C-t> "hy:s/<C-r>h/_(<C-r>h, request)/g<CR>"
+command! Black execute "!black %"
